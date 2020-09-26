@@ -3,7 +3,7 @@ import pymysql
 class Contacts():
 
     def __init__(self):
-        print('             Bienvenidos a mi programa')
+        print('             Bienvenidos a mi programa, podrás guardar a tus contactos (clientes en esta agenda)')
 
 
     def connection(self):
