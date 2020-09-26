@@ -7,12 +7,12 @@ class Contacts():
 
 
     def connection(self):
-        #iniciamos la conexión
+        #start connection
         self.db = pymysql.connect(
             host='localhost',
             user='root',
             password='',
-            db='test'
+            db='agenda'
         )
 
         self.cursor = self.db.cursor()
@@ -25,9 +25,9 @@ class Contacts():
         email = str(input('Type your email: '))
 
         try:
-            query = "INSERT INTO usuarios(nombre, apellido, correo) VALUES('{}','{}','{}')".format(name, last_name, email)
+            query = "INSERT INTO users(name, last_name, email) VALUES('{}','{}','{}')".format(name, last_name, email)
 
-            self.close_db(query) #en esta función se encuentra execute, commit y close
+            self.close_db(query) #in this function there are commands: execute, commit and close
 
         except Exception as e:
             print('Please, try again!')
@@ -42,7 +42,7 @@ class Contacts():
             last_name = str(input('Type yout last name: '))
             email = str(input('Type your email: '))
 
-            query = "UPDATE usuarios SET nombre='{}', apellido='{}',correo='{}' WHERE usuario_id={}".format(name, last_name, email, self.users[0])
+            query = "UPDATE users SET name='{}', last_name='{}',email='{}' WHERE user_id={}".format(name, last_name, email, self.users[0])
 
             self.close_db(query)
 
@@ -51,14 +51,14 @@ class Contacts():
         self.connection()
         name = str(input('Type name to delete: '))
         if self.select_user(name):
-            query = "DELETE FROM usuarios WHERE usuario_id={}".format(self.users[0])
+            query = "DELETE FROM users WHERE user_id={}".format(self.users[0])
 
             self.close_db(query)
 
 
     def select_user(self, name):
         self.connection()
-        query = "SELECT * FROM usuarios WHERE nombre = '{}'".format(name)
+        query = "SELECT * FROM users WHERE name = '{}'".format(name)
 
         try:
             self.cursor.execute(query)
@@ -81,7 +81,7 @@ class Contacts():
 
     def show_all(self):
         self.connection()
-        query = "SELECT * FROM usuarios"
+        query = "SELECT * FROM users"
 
         try:
             self.cursor.execute(query)
@@ -89,9 +89,9 @@ class Contacts():
             #users = self.cursor.fetchall()
             # for user in users:
             #     print('ID:', user[0])
-            #     print('NOMBRE:', user[1])
-            #     print('APELLIDO:', user[2])
-            #     print('CORREO:', user[3])
+            #     print('NAME:', user[1])
+            #     print('LAST NAME:', user[2])
+            #     print('EMAIL:', user[3])
 
             for user in self.cursor.fetchall():
                 print('-----*-----*-----*-----*----*-----*-----*')
@@ -102,13 +102,13 @@ class Contacts():
             print(e, "The user doesn't exist")
 
     def close_db(self, query):
-        #ejecutamos la consulta
+        #execute sql
         self.cursor.execute(query)
-        #confirmamos la consulta de sql
+        #confirm the sql
         self.db.commit()
-        #mostramos los nuevos datos
+        #show new rows
         self.show_all()
-        #cerramos la conexion
+        #close connection
         self.db.close()
 
 if __name__ == '__main__':
