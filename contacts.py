@@ -30,17 +30,17 @@ class Contacts():
             self.close_db(query) #en esta función se encuentra execute, commit y close
 
         except Exception as e:
-            print('Intenta nuevamente')
+            print('Please, try again!')
 
 
     def update_user(self):
         self.connection()
-        name = str(input('Ingresa el nombre de la persona que deseas actualizar: '))
+        name = str(input('Type name to update: '))
         if self.select_user(name):
-            #si el usuario existe, entonces lo actualizamos
-            name = str(input('Ingresa tu nombre: '))
-            last_name = str(input('Ingresa tu apellido: '))
-            email = str(input('Ingresa tu correo: '))
+            #if user exist, then update row
+            name = str(input('Type your name: '))
+            last_name = str(input('Type yout last name: '))
+            email = str(input('Type your email: '))
 
             query = "UPDATE usuarios SET nombre='{}', apellido='{}',correo='{}' WHERE usuario_id={}".format(name, last_name, email, self.users[0])
 
@@ -49,7 +49,7 @@ class Contacts():
 
     def delete_user(self):
         self.connection()
-        name = str(input('Ingresa el nombre de la persona que deseas eliminar: '))
+        name = str(input('Type name to delete: '))
         if self.select_user(name):
             query = "DELETE FROM usuarios WHERE usuario_id={}".format(self.users[0])
 
@@ -69,14 +69,14 @@ class Contacts():
 
             self.users = self.cursor.fetchone()
             print('ID:', self.users[0])
-            print('NOMBRE:', self.users[1])
-            print('APELLIDO:', self.users[2])
-            print('CORREO:', self.users[3])
+            print('NAME:', self.users[1])
+            print('LAST NAME:', self.users[2])
+            print('EMAIL:', self.users[3])
             #si se ejecuta esta ultima linea, es porque el usuario existe por lo tanto
             #se puede modificar o eliminar.
             return True
         except Exception as e:
-            print('El usuario no existe')
+            print("The user doesn't exist")
 
 
     def show_all(self):
@@ -85,6 +85,7 @@ class Contacts():
 
         try:
             self.cursor.execute(query)
+            #another way to show de users
             #users = self.cursor.fetchall()
             # for user in users:
             #     print('ID:', user[0])
@@ -94,11 +95,11 @@ class Contacts():
 
             for user in self.cursor.fetchall():
                 print('-----*-----*-----*-----*----*-----*-----*')
-                print(f'NOMBRE: {user[1]}, APELLIDO: {user[2]}, CORREO: {user[3]}')
+                print(f'NAME: {user[1]}, LAST NAME: {user[2]}, EMAIL: {user[3]}')
                 print('-----*-----*-----*-----*----*-----*-----*')
 
         except Exception as e:
-            print(e, 'El usuario no existe')
+            print(e, "The user doesn't exist")
 
     def close_db(self, query):
         #ejecutamos la consulta
@@ -116,24 +117,24 @@ if __name__ == '__main__':
 
     while True:
 
-        command = str(input("""Que deseas hacer
-                 [i]nsertar
-                 [a]ctualizar
-                 [e]liminar
-                 [b]uscar
-                 [s]alir: """))
+        command = str(input("""What do you want to do
+                 [c]reate
+                 [r]ead
+                 [u]pdate
+                 [d]elete
+                 [s]ing out: """))
 
-        if command == 'i':
+        if command == 'c':
             con.insert_user()
-        elif command == 'a':
+        elif command == 'u':
             con.update_user()
-        elif command == 'e':
+        elif command == 'd':
             con.delete_user()
-        elif command == 'b':
-            name = str(input('Ingresa el nombre que deseas buscar: '))
+        elif command == 'r':
+            name = str(input('Type name to find: '))
             con.select_user(name)
         elif command == 's':
-            print('Vuelva pronto')
+            print('See you later!')
             break
         else:
-            print('Ingresa un comando válido')
+            print('Type a correct option')
