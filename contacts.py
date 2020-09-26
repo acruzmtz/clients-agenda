@@ -3,7 +3,7 @@ import pymysql
 class Contacts():
 
     def __init__(self):
-        print('             Bienvenidos a mi programa, podrás guardar a tus contactos (clientes en esta agenda)')
+        print('             Welcome to your agenda, you can save all your contacts!')
 
 
     def connection(self):
@@ -19,10 +19,10 @@ class Contacts():
 
 
     def insert_user(self):
-        self.connection() #invocamos nuestra conexion con la db
-        name = str(input('Ingresa tu nombre: '))
-        last_name = str(input('Ingresa tu apellido: '))
-        email = str(input('Ingresa tu correo: '))
+        self.connection() #start a connection with database
+        name = str(input('Type your name: '))
+        last_name = str(input('Type your last name: '))
+        email = str(input('Type your email: '))
 
         try:
             query = "INSERT INTO usuarios(nombre, apellido, correo) VALUES('{}','{}','{}')".format(name, last_name, email)
