@@ -1,0 +1,15 @@
+* 9b3dc26 (HEAD -> master, origin/master) version 2 finished
+* 4640bf3 add image to readme file
+* 5fdc112 add sql file
+* 54953ac I created a new connection with database
+*   5987f3f Saving changes, it works! Merge branch 'master' of https://github.com/acruzmtz/clients-agenda into master
+|\  
+| * 1210b4d Update README
+* | 0516d6e Change all text to english
+* | e081d07 Add a better title to program, and fix de database error
+|/  
+* ae0755c updated title to announce functionality of program
+*   ba8fc8a Created first merge master to github Merge branch 'master' of https://github.com/acruzmtz/clients-agenda into master
+|\  
+| * 1282b3c Initial commit
+* 7a5b6ff First version of client-agenda
