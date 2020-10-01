@@ -23,7 +23,7 @@ if __name__ == '__main__':
             name = str(input('Type name to find: '))
             con.select_user(name)
         elif command == 's':
-            print('See you later!')
+            print('See you later!, Thanks for use Agenda')
             break
         else:
             print('Type a correct option')
