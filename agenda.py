@@ -58,7 +58,7 @@ class Contacts():
 
     def select_user(self, name):
         self.connection()
-        query = "SELECT * FROM users WHERE name = '{}'".format(name)
+        query = "SELECT * FROM users WHERE name LIKE '{}%'".format(name)
 
         try:
             self.cursor.execute(query)
