@@ -52,9 +52,9 @@ class Contacts():
         name = str(input('Type name to delete: '))
         if self.select_user(name):
             query = "DELETE FROM users WHERE user_id={}".format(self.users[0])
-            print('*' * 40)
+            print('*' * 50)
             print("usuario eliminado correctamente")
-            print('*' * 40)
+            print('*' * 50)
             self.close_db(query)
 
 
