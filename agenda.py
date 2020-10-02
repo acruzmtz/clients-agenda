@@ -42,7 +42,7 @@ class Contacts():
             last_name = str(input('Type yout last name: '))
             email = str(input('Type your email: '))
 
-            query = "UPDATE users SET name='{}', last_name='{}',email='{}' WHERE user_id={}".format(name, last_name, email, self.users[0])
+            query = "UPDATE users SET name='{}', last_name='{}',email='{}' WHERE user_id={} LIMIT 1".format(name, last_name, email, self.users[0])
 
             self.close_db(query)
 
