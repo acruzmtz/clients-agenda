@@ -51,7 +51,7 @@ class Contacts():
         self.connection()
         name = str(input('Type name to delete: '))
         if self.select_user(name):
-            query = "DELETE FROM users WHERE user_id={}".format(self.users[0])
+            query = "DELETE FROM users WHERE user_id={} LIMIT 1".format(self.users[0])
 
             self.close_db(query)
 
