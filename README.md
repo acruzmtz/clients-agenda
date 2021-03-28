@@ -1,5 +1,5 @@
 # Clients-agenda
-You can save all your clients in this address book, such as names, surnames and emails.
+You can save all your clients in this address book, such as names, usernames and emails.
 
 This project was done in Python, in this case I used mysql as the database administrator.
 
