@@ -12,3 +12,4 @@ ___
     install pymysql with pip (pip install -r requirements.txt)
 
 
+- don't forget to change your database administrator's credentials to connect
